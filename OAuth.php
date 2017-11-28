@@ -1,6 +1,9 @@
 <?php
 /**
 *thinkphp5利用GuzzleHttp完成身份认证并发送json数据
+*参考：https://www.cnblogs.com/dengyg200891/p/4930664.html
+*参考：https://stackoverflow.com/questions/36011790/guzzle-http-add-authorization-header-directly-into-request
+*
 */
 namespace app\index\controller;
 use GuzzleHttp\Client;
