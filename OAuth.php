@@ -1,4 +1,7 @@
 <?php
+/**
+*thinkphp5利用GuzzleHttp完成身份认证并发送json数据
+*/
 namespace app\index\controller;
 use GuzzleHttp\Client;
 class Index extends Base
