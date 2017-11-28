@@ -15,6 +15,7 @@ class Index extends Base
     }
     public function index(){
         $response = $this->Client->request('POST', 'http://127.0.0.1/getInfo', [
+            //http认证
             'auth' => ['admin','admin'],
             'json' => ['taskid' => '41011416','username'=>'admin'],
             'verify' => false
