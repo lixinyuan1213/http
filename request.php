@@ -24,7 +24,8 @@ $response = $client->request('POST', 'http://localhost/http/response.php', [
             'nested' => 'hello'
         ]
     ],
-    'verify' => false
+    'verify' => false,
+    'connect_timeout'=> 15
 ]);
 $body = $response->getBody();
 $contents = $body->getContents();
