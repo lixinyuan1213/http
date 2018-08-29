@@ -53,3 +53,9 @@ $response = $client->request('POST', 'http://localhost/http/response.php', [
 ]);
 $body = $response->getBody();
 $contents = $body->getContents();
+//文件下载
+$client = new \GuzzleHttp\Client();
+$client->request('GET',$url,[
+     'verify' => false,
+     'save_to' => $path
+]);
