@@ -4,13 +4,9 @@
 require 'vendor/autoload.php';
 use QL\QueryList;
 function download(){
-
-
     set_time_limit(0);
-
     ignore_user_abort(true);
     $allUsers = [];
-
     $ql = QueryList::getInstance();
     for ($i=1;$i<=10;$i++)
     {
