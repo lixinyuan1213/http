@@ -7,48 +7,55 @@ class HttpClient
     //错误信息
     private $errorInfo = '';
     //http请求类
-    public $httpClient = null;
+    private $httpClient = null;
     //http状态码
     private $httpCode = 200;
+    //超时时间(s)
+    private static $timeOut = 120;
     public function __construct()
     {
         $this->httpClient = new Client();
     }
     //单例
-    public static $_instance = NULL;
+    private static $_instance = NULL;
+
     /**
      * 静态工厂方法，返还此类的唯一实例
+     * @param int $timeOut   超时时间
+     * @return HttpClient|null
      */
-    public static function getInstance()
+    public static function getInstance($timeOut=120)
     {
         if (is_null(self::$_instance))
         {
             self::$_instance = new self();
         }
+        self::$timeOut = $timeOut;
         return self::$_instance;
     }
     /**
      * 通用请求方法
-     * @param string $url        请求地址
-     * @param array $data        请求参数
-     * @param string $method     请求方法（GET/POST）
-     * @param bool $ajax         是否是ajax请求 true是，false不是
-     * @param array $headers     请求头
+     * @param string  $url        请求地址
+     * @param array   $data        请求参数
+     * @param string  $method     请求方法（GET/POST）
+     * @param bool    $ajax         是否是ajax请求 true是，false不是
+     * @param array   $headers     请求头
      * @return bool|string(json/html)
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function httpClientFun($url='',$data=[],$method='POST',$ajax=false,$headers=[]){
         try {
+            $method = strtolower($method);
             //构建请求参数
             $param = [];
             $param['verify'] = false;
+            $param['timeout'] = self::$timeOut;
             if($ajax){
                 //判断是否为ajax请求
                 $param['json'] = $data;
             }else{
                 //判断是否为post请求
-                $methodLower = strtolower($method);
-                if($methodLower=='post')
+                if($method=='post')
                 {
                     $param['form_params'] = $data;
                 }
