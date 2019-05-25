@@ -59,3 +59,12 @@ $client->request('GET',$url,[
      'verify' => false,
      'save_to' => $path
 ]);
+//代理（传入关联数组来为特殊的URI Scheme指定特色的HTTP代理(比如"http", "https") 提供一个 no 键值对来提供一组不需要使用代理的主机名）
+$client = new \GuzzleHttp\Client();
+$client->request('GET', '/', [
+    'proxy' => [
+        'http'  => 'tcp://localhost:8125', // Use this proxy with "http"
+        'https' => 'tcp://localhost:9124', // Use this proxy with "https",
+        'no' => ['.mit.edu', 'foo.com']    // Don't use a proxy with these
+    ]
+])
