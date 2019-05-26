@@ -63,8 +63,7 @@ $client->request('GET',$url,[
 $client = new \GuzzleHttp\Client();
 $client->request('GET', '/', [
     'proxy' => [
-        'http'  => 'tcp://localhost:8125', // Use this proxy with "http"
-        'https' => 'tcp://localhost:9124', // Use this proxy with "https",
+        'http'  => 'http://localhost:8125', // Use this proxy with "http"
         'no' => ['.mit.edu', 'foo.com']    // Don't use a proxy with these
     ]
 ])
