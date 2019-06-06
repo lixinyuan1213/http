@@ -10,7 +10,7 @@ $client = new Client();
 $response = $client->request('GET','http://localhost/http/response.php?id=2&name=2',['verify' => false,
 'headers' => [
     'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36',
-    'Referer'=>'http://www.baidu.com/keys=lsdjisdf'
+    'Referer'=>'https://www.baidu.com/s?wd=wzrdfasd'
 ]
 ]);
 $body = $response->getBody();
