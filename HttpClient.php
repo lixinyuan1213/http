@@ -33,6 +33,21 @@ class HttpClient
         self::$timeOut = $timeOut;
         return self::$_instance;
     }
+    //get请求
+    public function getFunction($url='',$headers=[])
+    {
+        return $this->httpClientFun($url,'','get',false,$headers);
+    }
+    //post请求
+    public function postFunction($url='',$data=[],$headers=[])
+    {
+        return $this->httpClientFun($url,$data,'post',false,$headers);
+    }
+    //ajax请求
+    public function ajaxFunction($url='',$data=[],$headers=[])
+    {
+        return $this->httpClientFun($url,$data,'post',true,$headers);
+    }
     /**
      * 通用请求方法
      * @param string  $url        请求地址
