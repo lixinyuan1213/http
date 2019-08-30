@@ -60,7 +60,7 @@ $client->request('GET',$url,[
      'verify' => false,
      'save_to' => $path
 ]);
-//代理（传入关联数组来为特殊的URI Scheme指定特色的HTTP代理(比如"http", "https") 提供一个 no 键值对来提供一组不需要使用代理的主机名）
+//代理示例一（传入关联数组来为特殊的URI Scheme指定特色的HTTP代理(比如"http", "https") 提供一个 no 键值对来提供一组不需要使用代理的主机名）
 $client = new \GuzzleHttp\Client();
 $client->request('GET', '/', [
     'proxy' => [
@@ -68,3 +68,13 @@ $client->request('GET', '/', [
         'no' => ['.mit.edu', 'foo.com']    // Don't use a proxy with these
     ]
 ])
+//代理示例二（使用TinyProxy搭建http代理）
+$response = $client->request('GET','https://api.kucoin.com/api/v1/symbols',['verify' => false,
+    'headers' => [
+        'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36',
+        'Referer'=>'https://www.baidu.com/s?wd=wzrdfasd'
+    ],
+    'proxy' => [
+        'https'  => 'http://11.11.11.11:8888',
+     ]
+]);
