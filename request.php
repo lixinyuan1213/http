@@ -69,12 +69,12 @@ $client->request('GET', '/', [
     ]
 ])
 //代理示例二（使用TinyProxy搭建http代理）
-$response = $client->request('GET','https://api.kucoin.com/api/v1/symbols',['verify' => false,
+$response = $client->request('GET','http://localhost/http/response.php',['verify' => false,
     'headers' => [
         'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36',
         'Referer'=>'https://www.baidu.com/s?wd=wzrdfasd'
     ],
     'proxy' => [
-        'https'  => 'http://11.11.11.11:8888',
+        'http'  => 'http://11.11.11.11:8888',
      ]
 ]);
